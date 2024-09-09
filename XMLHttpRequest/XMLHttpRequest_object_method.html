@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>XMLHttpRequest Basic Object Method</h1>
+    <button id="button">XMLHttpRequest</button>
+</body>
+<script>
+    window.document.querySelector("#button")
+    .addEventListener("click" , (event) => {
+        let request = new XMLHttpRequest();
+        
+        // request.open(method,url,async,user,psw);
+        // method as GET, POST, PUT, DELETE
+        // url as http , path/file.txt and etc
+        // async as true(asynchronous), false(synchronous)
+        // user as optional user name
+        // psw as optional password
+        request.open("GET","https://crud.teamrabbil.com/api/vl/readProduct");
+
+        // add a request header , it is done after request.open
+        request.setRequestHeader("Language","C++");
+    
+        // request.send(string)
+        request.send();
+    
+        // if you want cancle or abort
+        // request.abort();
+    
+        request.addEventListener("load" , () => {
+            let content = document.querySelector("h1");
+
+            // to see all response header
+            content.innerText = request.getAllResponseHeaders();
+
+            // to see single response header
+            content.innerText = request.getResponseHeader("last-modified");
+
+            // go to browser inspect > network> click the button and click last request and header
+            // and goto header option see the request and response header
+        });
+    });
+</script>
+
+</html>

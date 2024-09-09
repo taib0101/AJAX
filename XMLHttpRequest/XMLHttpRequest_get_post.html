@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="one">Get Request</h1>
+    <button id="get"> get http request</button>
+    
+    <h1 id="two">Post Request</h1>
+    <button id="post">post http request</button>
+</body>
+<script>
+    // note: 
+    // you can request to any url, it called Cross Origin Request
+    // some website block cross origin request , that's way you
+    // you can't get this response shit
+
+
+    // button1
+    const button1 = document.querySelector("#get");
+    button1.addEventListener("click",() => {
+        let request = new XMLHttpRequest();
+        request.open("GET","data.txt",true);
+        request.send();
+
+        request.addEventListener("load" , () => {
+            let one = document.querySelector("#one");
+            one.innerText = request.responseText;
+        });
+    });
+
+    // button2
+    const button2 = document.querySelector("#post");
+    button2.addEventListener("click",() => {
+        let json_object = {
+            name : "taib",
+            age  : "25",
+            year : "2024"
+        }
+
+        let request = new XMLHttpRequest();
+        request.open("POST","data.txt",true);
+        request.send(json_object);
+
+        // When using XMLHttpRequest with request.open("POST", "data.txt"), the browser treats it as 
+        // a file retrieval (like a GET request), 
+        // because local files cannot be modified directly via HTTP requests
+        
+        // **To modify local files via HTTP, you need to set up a local server (e.g., using Node.js) to 
+        // handle HTTP requests and manage file operations.
+        request.addEventListener("load",() => {
+            let two = document.querySelector("#two");
+            two.innerText = request.responseText;
+        });
+    });
+</script>
+</html>

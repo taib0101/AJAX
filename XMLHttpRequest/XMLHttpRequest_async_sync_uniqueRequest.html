@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>XMLHttpRequest open with aynschronous , synchronous or with unique id </h1>
+    <button id="button">XMLHttpRequest</button>
+</body>
+
+<script>
+    let button = document.querySelector("#button");
+
+    // asynchronous
+    // button.addEventListener("click" , () => {
+    //     let request = new XMLHttpRequest();
+    //     request.open("GET","https://randomuser.me/api",true);
+    //     request.send();
+        
+    //     request.addEventListener("load",() => {
+    //         console.log("request loaded 01");
+    //     });
+    //     console.log("asynchronous");
+    // });
+
+    // synchronous
+    // button.addEventListener("click" , () => {
+    //     let request = new XMLHttpRequest();
+    //     request.open("GET","https://randomuser.me/api",false);
+    //     request.send();
+        
+    //     request.addEventListener("load",() => {
+    //         console.log("request loaded 02");
+    //     });
+    //     console.log("synchronous");
+    // });
+
+    // after giving request to server ,it remember the cached ,
+    // but random request don't remind the cache
+    button.addEventListener("click" , () => {
+        let request = new XMLHttpRequest();
+        request.open("GET","https://randomuser.me/api?t=" + Math.random(),true);
+        request.send();
+        
+        request.addEventListener("load",() => {
+            console.log("different cached");
+            let content = document.querySelector("h1");
+            content.innerText = request.responseText;
+        });
+    });
+</script>
+</html>
