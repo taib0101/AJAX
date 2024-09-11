@@ -19,8 +19,8 @@
     
     let stringToObject;
     // request.responseType = "json"
+    const one = document.querySelector("#one");
     button1.addEventListener("click",() => {
-        const one = document.querySelector("#one");
         let request = new XMLHttpRequest();
         request.open("GET","https://randomuser.me/api",true);
         // using responseType it means, i will get the response,it will be JSON format
@@ -36,10 +36,10 @@
         });
     });
 
+     const two = document.querySelector("#two");
     // object to string
     button2.addEventListener("click",() => {
         let objectToString = JSON.stringify(stringToObject);
-        const two = document.querySelector("#two");
 
         two.innerText = objectToString;
         console.log(objectToString);

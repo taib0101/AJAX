@@ -18,9 +18,9 @@
     const button2 = document.querySelector("#button2");
     
     let stringToObject;
+    const one = document.querySelector("#one");
     // string to object
     button1.addEventListener("click",() => {
-        const one = document.querySelector("#one");
         let request = new XMLHttpRequest();
         request.open("GET","https://randomuser.me/api",true);
         request.send();
@@ -34,11 +34,11 @@
         });
     });
 
+     const two = document.querySelector("#two");
     // object to string
     button2.addEventListener("click",() => {
         // object to string
         let objectToString = JSON.stringify(stringToObject);
-        const two = document.querySelector("#two");
         two.innerText = objectToString;
         console.log(objectToString);
     });

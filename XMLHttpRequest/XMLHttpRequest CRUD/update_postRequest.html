@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Update</h1>
+    <button>post request</button>
+</body>
+
+<script>
+    const button = document.querySelector("button");
+
+    const h1 = document.querySelector("h1");
+    let method = "POST";
+    let url = "https://crud.teamrabbil.com/api/v1/UpdateProduct/66e0c4259d5278b91fb0cd71";
+    let data = {
+        name : "Mustain Taib",
+        "age" : 25
+    };
+    button.addEventListener("click" , () => {
+        let request = new XMLHttpRequest();
+
+        request.open(method,url,true);
+        request.send(JSON.stringify(data));
+
+        request.addEventListener("load",() => {
+            h1.innerText = request.responseText;
+        })
+
+        request.addEventListener("error" , () => {
+            console.log("error");
+        });
+    });
+</script>
+
+</html>

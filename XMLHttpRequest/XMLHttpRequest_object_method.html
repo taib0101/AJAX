@@ -31,9 +31,8 @@
         // if you want cancle or abort
         // request.abort();
     
+    	let content = document.querySelector("h1");
         request.addEventListener("load" , () => {
-            let content = document.querySelector("h1");
-
             // to see all response header
             content.innerText = request.getAllResponseHeaders();
 

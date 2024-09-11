@@ -44,9 +44,9 @@
         request.open("GET","https://randomuser.me/api?t=" + Math.random(),true);
         request.send();
         
+        let content = document.querySelector("h1");
         request.addEventListener("load",() => {
             console.log("different cached");
-            let content = document.querySelector("h1");
             content.innerText = request.responseText;
         });
     });

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Fetch Basic</h1>
+    <button>Fetch Basic</button>
+</body>
+<script>
+    const button = document.querySelector("button");
+
+    button.addEventListener("click" , () => {
+        const h1 = document.querySelector("h1");
+        h1.innerText = "fetch(url,object) \n";
+        h1.innerText += "fetch(\"https://randomuser.com/api\",{method: \"GET\" , headers : {Content-Type : \"application/json\"}}) \n";
+        h1.innerText += "fetch also can request(cross origin request) to anywhere as local directory or any kind of http link like XMLHttpRequest";
+
+        // fetch doesn't support event listener
+        fetch("https://crud.teamrabbil.com/api/v1/readProduct",{method : "GET"});
+        
+        
+        // or fetch(url,object);
+        let url = "https://crud.teamrabbil.com/api/v1/readProduct";
+        let data = 
+                {
+                    name : "Taib",
+                    age : 25
+                };
+        let object = {
+            method : "GET",
+            headers : {
+                "Content-Type" : "application/json",
+                "Action" : "application/json"
+            },
+            // we do not set body for sending data during get request
+        };
+        fetch(url,object);
+
+
+        // if you want to see the response of Fetch request , you have to apply "promise .then" or "async and await"
+    });
+</script>
+
+</html>
