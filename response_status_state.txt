@@ -13,7 +13,7 @@ response type
 **Note: This is only for Fetch 
 **fetch(url,object_request).then(response => console.log(response.type))
 
-if (response.status >= 200 && response.status < 300)
+if (response.status > 200 && response.status < 300)
 	console.log('Response Type: basic');
 else if (response.status >= 400 && response.status < 600)
 	console.log('Response Type: error');
