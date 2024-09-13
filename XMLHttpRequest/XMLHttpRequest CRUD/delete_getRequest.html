@@ -17,7 +17,7 @@
 
     const h1 = document.querySelector("h1");
     let method = "GET";
-    let url = "https://crud.teamrabbil.com/api/v1/ReadProduct/";
+    let url = "http://164.68.107.70:6060/api/v1/ReadProduct/";
     let arr = [];
     button.addEventListener("click" , () => {
         let request = new XMLHttpRequest();
@@ -32,9 +32,9 @@
             console.log(arr);
 
             for(let i = 0; i < arr.length; ++i) {
-                if(arr[i]._id === "66dcaddb496454513a94fde0") {
+                if(arr[i]._id === "66e41088953a8bfe7cac8eae") {
                     method = "GET";
-                    url = "https://crud.teamrabbil.com/api/v1/DeleteProduct/" + arr[i]._id;
+                    url = "http://164.68.107.70:6060/api/v1/DeleteProduct/" + arr[i]._id;
                     let request1 = new XMLHttpRequest();
                     
                     request1.open(method,url,true);

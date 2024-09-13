@@ -14,35 +14,38 @@
 <script>
     const button = document.querySelector("button");
 
-    button.addEventListener("click" , () => {
+    button.addEventListener("click", () => {
         const h1 = document.querySelector("h1");
         h1.innerText = "fetch(url,object) \n";
         h1.innerText += "fetch(\"https://randomuser.com/api\",{method: \"GET\" , headers : {Content-Type : \"application/json\"}}) \n";
-        h1.innerText += "fetch also can request(cross origin request) to anywhere as local directory or any kind of http link like XMLHttpRequest";
 
         // fetch doesn't support event listener
-        fetch("https://crud.teamrabbil.com/api/v1/readProduct",{method : "GET"});
-        
-        
+        fetch("http://164.68.107.70:6060/api/v1/ReadProduct", { method: "GET" })
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .catch(error => console.log(error));
+
+
         // or fetch(url,object);
-        let url = "https://crud.teamrabbil.com/api/v1/readProduct";
-        let data = 
-                {
-                    name : "Taib",
-                    age : 25
-                };
+        let url = "http://164.68.107.70:6060/api/v1/ReadProduct";
+
         let object = {
-            method : "GET",
-            headers : {
-                "Content-Type" : "application/json",
-                "Action" : "application/json"
-            },
+            method: "GET",
+            headers: {
+                // Add headers only if required by the server (e.g., for authentication or other custom purposes).
+                "Authorization": "Bearer your-token",  // Custom headers, if needed
+                "X-Custom-Header": "your-custom-value"
+            }
             // we do not set body for sending data during get request
         };
-        fetch(url,object);
+        fetch(url, object)
+            .then(response => response.json())
+            .then(result => console.log(result))
+            .catch(error => console.log(error));
 
 
         // if you want to see the response of Fetch request , you have to apply "promise .then" or "async and await"
+        // better practice is using async await
     });
 </script>
 

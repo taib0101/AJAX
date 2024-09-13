@@ -14,15 +14,21 @@
 <script>
     const button = document.querySelector("button");
     let data = {
-        name : "Taib",
-        age : 25
+        ProductName: "productName.value",
+        ProductCode: "productCode.value",
+        Img: "productImage.value",
+        UnitPrice: "unitPrice.value",
+        Qty: "productQty.value",
+        TotalPrice: "productTotal.value"
     };
-    let url = "https://crud.teamrabbil.com/api/v1/CreateProduct";
+
+    
+    let url = "http://164.68.107.70:6060/api/v1/CreateProduct";
     let object_request = {
         method : "POST",
         headers : {
             "Content-Type" : "application/json",
-            "Actions" : "application/json"
+            "Action" : "application/json"
         },
         body : JSON.stringify(data)
     };

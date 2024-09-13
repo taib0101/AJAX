@@ -19,34 +19,35 @@
 
     // using async await is better then promise
     async function main() {
-        let url = "https://randomuser.me/api";
+        let url = "http://164.68.107.70:6060/api/v1/ReadProduct";
         let object = {
-            method : "GET",
-            headers : {
-                "Content-Types" : "application/json"
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer your-token",
+                "X-Custom-Header": "your-custom-value"
             }
             // we do not set body for sending data during get request
         };
 
         try {
-            let response = await fetch(url,object);
-            console.log("status : ",response.status);
-            console.log("state : ",response.ok);
-            console.log("response header : ",response.headers);
-            console.log("response body : ",response.body);
-            console.log("response type : ",response.type);
+            let response = await fetch(url, object);
+            console.log("status : ", response.status);
+            console.log("state : ", response.ok);
+            console.log("response header : ", response.headers);
+            console.log("response body : ", response.body);
+            console.log("response type : ", response.type);
 
             let data = await response.json();
             // let data = await response.text(); // **
 
             h1.innerText = JSON.stringify(data);
             // h1.innerText = data; // **
-        } catch(error) {
+        } catch (error) {
             console.log(error);
         }
     }
 
-    button.addEventListener("click" , () => {
+    button.addEventListener("click", () => {
         main();
     });
 </script>

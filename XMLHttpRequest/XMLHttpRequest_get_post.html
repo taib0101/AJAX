@@ -18,7 +18,7 @@
     const button1 = document.querySelector("#get");
     button1.addEventListener("click",() => {
         let request = new XMLHttpRequest();
-        request.open("GET","data.txt",true);
+        request.open("GET","http://164.68.107.70:6060/api/v1/ReadProduct",true);
         request.send();
 
 	let one = document.querySelector("#one");
@@ -29,15 +29,25 @@
 
     // button2
     const button2 = document.querySelector("#post");
+
+    // which is server the information , full fill the information, if you don't it will not post 
     let data = {
-            name : "taib",
-            age  : "25",
-            year : "2024"
+            ProductName: "I",
+            ProductCode: "am",
+            Img: "a",
+            UnitPrice: "man",
+            Qty: "is",
+            TotalPrice: "mortal"
         }
 
     button2.addEventListener("click",() => {
         let request = new XMLHttpRequest();
-        request.open("POST","data.txt",true);
+        request.open("POST","http://164.68.107.70:6060/api/v1/CreateProduct",true);
+
+        // if you don't set headers data will not post to the server
+        request.setRequestHeader("Content-Type","application/json");
+        request.setRequestHeader("Action","application/json");
+
         request.send(JSON.stringify(data));
 
         // When using XMLHttpRequest with request.open("POST", "data.txt"), the browser treats it as 

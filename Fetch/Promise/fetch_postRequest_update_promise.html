@@ -14,19 +14,23 @@
 <script>
     const button = document.querySelector("button");
     let data = {
-        name : "Murtaza Taib",
-        age : 25
+        ProductName: "productName",
+        ProductCode: "productCode",
+        Img: "productImage",
+        UnitPrice: "unitPrice",
+        Qty: "productQty",
+        TotalPrice: "productTotal"
     };
 
     // yo can do it with PUT and POST request both
     // if you want to update data , you can use POST request with unique id to update data
     // url = https://web-url/home/destination/uniqueId;
-    let url = "https://crud.teamrabbil.com/api/v1/UpdateProduct/66e0579f9d5278b91fb0cc41";
+    let url = "http://164.68.107.70:6060/api/v1/UpdateProduct/66e4256e953a8bfe7cac904c";
     let object_request = {
         method : "POST",
         headers : {
             "Content-Type" : "application/json",
-            "Actions" : "application/json"
+            "Action" : "application/json"
         },
         body : JSON.stringify(data)
     };

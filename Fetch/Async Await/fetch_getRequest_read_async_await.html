@@ -19,11 +19,12 @@
 
     // using async await is better then promise
     async function main() {
-        let url = "https://randomuser.me/api";
+        let url = "http://164.68.107.70:6060/api/v1/ReadProduct";
         let object = {
             method : "GET",
             headers : {
-                "Content-Types" : "application/json"
+                "Authorization": "Bearer your-token",
+                "X-Custom-Header": "your-custom-value"
             }
             // we do not set body for sending data during get request
         };

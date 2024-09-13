@@ -22,33 +22,36 @@
         try {
             let url = "https://randomuser.me/api";
             let object = {
-                method : "GET",
-                headers : {
-                    "Content-Types" : "application/json"
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer your-token",
+                    "X-Custom-Header": "your-custom-value"
                 },
-                signal : signal
+                signal: signal
             }
-            let response = await fetch(url,object);
+
+            let response = await fetch(url, object);
             let data = await response.json();
             // let data = await response.text(); // **
-    
+
             h1.innerText = JSON.stringify(data);
             // h1.innerText = data // **
-        } catch(error) {
-            if(error.name === "AbortError")
+        } catch (error) {
+            if (error.name === "AbortError")
                 console.log(error.name);
             else
                 console.log("another error");
         }
     }
 
-    
-    button.addEventListener("click" , () => {
+
+    button.addEventListener("click", () => {
         main();
         setTimeout(() => {
             controller.abort();
             console.log("abort call from here");
-        },1000);
+        }, 10);
     });
 </script>
+
 </html>

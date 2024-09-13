@@ -18,7 +18,7 @@
         let request = new XMLHttpRequest();
 
         // try this for error event , after disconnect the internet
-        request.open("GET","data.json",true);
+        request.open("GET","http://164.68.107.70:6060/api/v1/ReadProduct",true);
         request.send();
         
         let content;

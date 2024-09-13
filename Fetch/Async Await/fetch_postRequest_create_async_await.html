@@ -16,35 +16,42 @@
     const button = document.querySelector("button");
     const h1 = document.querySelector("h1");
 
-
     // using async await is better then promise
     async function main() {
-        let url = "https://crud.teamrabbil.com/api/v1/CreateProduct/";
+        let url = "http://164.68.107.70:6060/api/v1/CreateProduct/";
+
+        let data = {
+            ProductName: "productName.value",
+            ProductCode: "productCode.value",
+            Img: "productImage.value",
+            UnitPrice: "unitPrice.value",
+            Qty: "productQty.value",
+            TotalPrice: "productTotal.value"
+        };
+
         let object = {
-            method : "POST",
-            headers : {
-                "Content-Types" : "application/json"
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Action": "application/json"
             },
-            body : {
-                name : "Taib",
-                age : 25
-            }
+            body: JSON.stringify(data)
         };
 
         try {
-            let response = await fetch(url,object);
-        
+            let response = await fetch(url, object);
+
             let data = await response.json();
             // let data = await response.text(); // **
 
             h1.innerText = JSON.stringify(data);
             // h1.innerText = data; // **
-        } catch(error) {
+        } catch (error) {
             console.log(error);
         }
     }
 
-    button.addEventListener("click" , () => {
+    button.addEventListener("click", () => {
         main();
     });
 </script>

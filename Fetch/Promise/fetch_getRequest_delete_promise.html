@@ -16,11 +16,12 @@
     // then delete it with DELETE request
 
     const button = document.querySelector("button");
-    let url = "https://crud.teamrabbil.com/api/v1/readProduct";
+    let url = "http://164.68.107.70:6060/api/v1/ReadProduct";
     let object = {
         method: "GET",
         headers: {
-            "Content-Type": "applicaiton/json"
+            "Content-Type": "application/json",
+            "Action": "application/json"
         }
     };
 
@@ -42,8 +43,8 @@
                 arr = data.data;
                 console.log(arr);
                 h1.innerText = JSON.stringify(data);
-                for(let i = 0; i < arr.length; ++i) {
-                    if (arr[i]._id === "66dcae01496454513a94fdf8") return arr[i]._id;
+                for (let i = 0; i < arr.length; ++i) {
+                    if (arr[i]._id === "66e4256e953a8bfe7cac904c") return arr[i]._id;
                 }
                 // arr.forEach(x => {return x}) or arr.map(x => {return x}) doesn't work for return a value
             })
@@ -54,11 +55,15 @@
                 // if we want to delete it we have to use DELETE request 
                 // but my instructor rabbil vai deleted it using get request
 
-                url = "https://crud.teamrabbil.com/api/v1/DeleteProduct/" + result;
+                url = "http://164.68.107.70:6060/api/v1/DeleteProduct/" + result;
                 console.log(url);
 
                 object = {
-                    method: "GET"
+                    method: "GET",
+                    headers: {
+                        "Authorization": "Bearer your-token",
+                        "X-Custom-Header": "your-custom-value"
+                    }
                 };
 
                 // now delete item, by calling fetch

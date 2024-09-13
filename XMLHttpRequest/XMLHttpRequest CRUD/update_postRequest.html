@@ -17,22 +17,31 @@
 
     const h1 = document.querySelector("h1");
     let method = "POST";
-    let url = "https://crud.teamrabbil.com/api/v1/UpdateProduct/66e0c4259d5278b91fb0cd71";
+    let url = "http://164.68.107.70:6060/api/v1/UpdateProduct/66e41088953a8bfe7cac8eae";
     let data = {
-        name : "Mustain Taib",
-        "age" : 25
+        ProductName : "productName",
+        ProductCode : "productCode",
+        Img : "productImage",
+        UnitPrice : "unitPrice",
+        Qty : "productQty",
+        TotalPrice : "productTotal"
     };
-    button.addEventListener("click" , () => {
-        let request = new XMLHttpRequest();
 
-        request.open(method,url,true);
+
+    button.addEventListener("click", () => {
+        let request = new XMLHttpRequest();
+        request.open(method, url, true);
+
+        request.setRequestHeader("Content-Type","application/json");
+        request.setRequestHeader("Action","application/json");
+
         request.send(JSON.stringify(data));
 
-        request.addEventListener("load",() => {
+        request.addEventListener("load", () => {
             h1.innerText = request.responseText;
         })
 
-        request.addEventListener("error" , () => {
+        request.addEventListener("error", () => {
             console.log("error");
         });
     });

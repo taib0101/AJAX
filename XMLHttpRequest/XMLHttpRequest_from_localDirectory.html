@@ -16,7 +16,7 @@
         let request = new XMLHttpRequest();
         // creating request in local directory
         // request.open("GET" , "data.json");
-        request.open("GET" , "data.txt");
+        request.open("GET","data.json",true);
         request.send();
 
         request.addEventListener("load" , (request_event) => {

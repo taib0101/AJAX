@@ -17,22 +17,30 @@
 
     const h1 = document.querySelector("h1");
     let method = "POST";
-    let url = "https://crud.teamrabbil.com/api/v1/CreateProduct/";
+    let url = "http://164.68.107.70:6060/api/v1/CreateProduct/";
     let data = {
-        name : "Murtaza Taib",
-        "age" : 25
+        ProductName: "productName.value",
+        ProductCode: "productCode.value",
+        Img: "productImage.value",
+        UnitPrice: "unitPrice.value",
+        Qty: "productQty.value",
+        TotalPrice: "productTotal.value"
     };
-    button.addEventListener("click" , () => {
+    
+    button.addEventListener("click", () => {
         let request = new XMLHttpRequest();
+        request.open(method, url, true);
 
-        request.open(method,url,true);
+        request.setRequestHeader("Content-Type","application/json");
+        request.setRequestHeader("Action","application/json");
+
         request.send(JSON.stringify(data));
 
-        request.addEventListener("load",() => {
+        request.addEventListener("load", () => {
             h1.innerText = request.responseText;
         })
 
-        request.addEventListener("error" , () => {
+        request.addEventListener("error", () => {
             console.log("error");
         });
     });

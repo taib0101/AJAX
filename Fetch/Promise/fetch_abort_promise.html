@@ -21,11 +21,12 @@
     let signal = controller.signal;
 
     button.addEventListener("click", () => {
-        let url = "https://crud.teamrabbil.com/api/v1/ReadProduct";
+        let url = "http://164.68.107.70:6060/api/v1/ReadProduct";
         let object = {
             method: "GET",
             headers: {
-                "Content-Types": "application/json"
+                "Authorization": "Bearer your-token", 
+                "X-Custom-Header": "your-custom-value"
             },
             signal: signal
         };
@@ -50,7 +51,7 @@
         setTimeout(() => {
             controller.abort();
             console.log("aborted call from here");
-        }, 2000)
+        }, 10)
     });
 
 </script>

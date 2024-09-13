@@ -12,15 +12,17 @@
 
 <script>
     let button = document.querySelector("#button");
+    let content = document.querySelector("h1");
 
     // asynchronous
     // button.addEventListener("click" , () => {
     //     let request = new XMLHttpRequest();
-    //     request.open("GET","https://randomuser.me/api",true);
+    //     request.open("GET","http://164.68.107.70:6060/api/v1/ReadProduct",true);
     //     request.send();
         
     //     request.addEventListener("load",() => {
     //         console.log("request loaded 01");
+    //         content.innerText = request.responseText;
     //     });
     //     console.log("asynchronous");
     // });
@@ -28,7 +30,7 @@
     // synchronous
     // button.addEventListener("click" , () => {
     //     let request = new XMLHttpRequest();
-    //     request.open("GET","https://randomuser.me/api",false);
+    //     request.open("GET","http://164.68.107.70:6060/api/v1/ReadProduct",false);
     //     request.send();
         
     //     request.addEventListener("load",() => {
@@ -41,10 +43,9 @@
     // but random request don't remind the cache
     button.addEventListener("click" , () => {
         let request = new XMLHttpRequest();
-        request.open("GET","https://randomuser.me/api?t=" + Math.random(),true);
+        request.open("GET","http://164.68.107.70:6060/api/v1/ReadProduct?t=" + Math.random(),true);
         request.send();
         
-        let content = document.querySelector("h1");
         request.addEventListener("load",() => {
             console.log("different cached");
             content.innerText = request.responseText;
